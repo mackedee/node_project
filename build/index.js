@@ -16,10 +16,11 @@ var app = (0, _express2.default)();
 
 app.use(_bodyParser2.default.urlencoded({ extended: false }));
 
-app.get('/users', _routes.getAll);
-app.get('/users/:user_id', _routes.getUser);
-app.post('/users', _routes.postUser);
-app.put('/users/:id', _routes.updateUser);
-app.delete('/users/:id', _routes.deleteUser);
+app.get('/dogs', _routes.getAll);
+app.get('/dogs/:dog_id', _routes.getDog);
+app.post('/dogs', _routes.postDog);
+app.put('/dogs/:id', _routes.updateDog);
+app.delete('/dogs/:id', _routes.deleteDog);
+app.delete('/dogs');
 
 app.listen(80);

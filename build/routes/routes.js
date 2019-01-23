@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteDog = exports.updateDog = exports.postDog = exports.getDog = exports.getAll = undefined;
+exports.deleteAll = exports.deleteDog = exports.updateDog = exports.postDog = exports.getDog = exports.getAll = undefined;
 
 var _pg = require('pg');
 
@@ -16,32 +16,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var getAll = exports.getAll = async function getAll(req, res) {
-  var users = await _knex2.default.select().from('users');
-  res.send(users);
+  var dogs = await _knex2.default.select().from('dogs');
+  res.send(dogs);
 };
 
 var getDog = exports.getDog = async function getDog(req, res) {
-  var user = await _knex2.default.select().from('users').where('id', req.params.user_id);
-  res.send(user);
+  var dog = await _knex2.default.select().from('dogs').where('id', req.params.dog_id);
+  res.send(dog);
 };
 
 var postDog = exports.postDog = async function postDog(req, res) {
-  await (0, _knex2.default)('users').insert({
+  await (0, _knex2.default)('dogs').insert({
     first_name: req.body.first_name,
     last_name: req.body.last_name
   });
-  var users = await _knex2.default.select().from('users');
-  res.send(users);
+  var dogs = await _knex2.default.select().from('dogs');
+  res.send(dogs);
 };
 
 var updateDog = exports.updateDog = async function updateDog(req, res) {
-  await (0, _knex2.default)('users').where('id', req.params.id).update(_defineProperty({}, req.body.field_name, req.body.field_value));
-  var users = await _knex2.default.select().from('users');
-  res.send(users);
+  await (0, _knex2.default)('dogs').where('id', req.params.id).update(_defineProperty({}, req.body.field_name, req.body.field_value));
+  var dogs = await _knex2.default.select().from('dogs');
+  res.send(dogs);
 };
 
 var deleteDog = exports.deleteDog = async function deleteDog(req, res) {
-  await (0, _knex2.default)('users').where('id', req.params.id).delete();
-  var users = await _knex2.default.select().from('users');
-  res.send(users);
+  await (0, _knex2.default)('dogs').where('id', req.params.id).delete();
+  var dogs = await _knex2.default.select().from('dogs');
+  res.send(dogs);
+};
+
+var deleteAll = exports.deleteAll = async function deleteAll(req, res) {
+  await (0, _knex2.default)('dogs').delete();
+  var dogs = await _knex2.default.select().from('dogs');
+  res.send(dogs);
 };
