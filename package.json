@@ -10,16 +10,17 @@
     "clean": "rimraf build/",
     "prebuild": "npm run clean",
     "build": "babel ./src --out-dir build/",
-    "create_users": "knex migrate:make create_dogs_table"
+    "create_dogs": "knex migrate:make create_dogs_table"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "knex": "0.16.3",
+    "knex": "^0.16.3",
     "moment": "^2.23.0",
-    "pg": "^7.8.0"
+    "pg": "^7.8.0",
+    "save": "^2.3.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
